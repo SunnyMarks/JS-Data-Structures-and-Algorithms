@@ -1,26 +1,28 @@
-function Queue() {
-  this.data = [];
+function createQueue() {
+  const queue = [];
+
+  return {
+    enqueue(item) {
+      queue.unshift(item);
+    },
+    dequeue() {
+      return queue.pop();
+    },
+    peek() {
+      return queue[queue.length - 1];
+    },
+    isEmpty() {
+      return queue.length === 0;
+    }
+  };
 }
 
+const q = createQueue();
+// add the queue
+q.enqueue("Make an egghead lesson");
+q.enqueue("Help others learn");
+q.enqueue("Be Happy");
 
-//Main methods
-Queue.prototype.add = function(record) {
-    this.data.unshift(record);
-}
-
-Queue.prototype.remove = functioon() {
-    this.data.pop();
-}
-
-//adding 3 more methods
-Queue.prototype.first = function() {
-    return this.data[0];
-}
-
-Queue.prototype.last = function() {
-    return this.data[this.data.length - 1];
-}
-
-Queue.prototype.size = function() {
-    return this.data.length;
-}
+//remove oldest first from queue
+q.dequeue();
+console.log(q.peek());
